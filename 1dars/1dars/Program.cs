@@ -6,7 +6,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        
+        var type = "accAUNtt";
+
+        var strategyType = NotifyFactory.GetObject(type);
+
+        var notifyStrategy = new NotifyStrategy(strategyType);
+        notifyStrategy.Notify("Keyingi dars kech qolmanglar");
+
     }
 
     public static void TestSingleton()
