@@ -7,6 +7,7 @@ namespace ToDoList.Dal;
 public class MainContext : DbContext
 {
     public DbSet<ToDoItem> ToDoItems { get; set; }
+    public DbSet<User> Users { get; set; }
     public MainContext(DbContextOptions<MainContext> options) : base(options)
     {
     }
@@ -15,5 +16,6 @@ public class MainContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new ToDoItemConfigurations());
+        modelBuilder.ApplyConfiguration(new UserConfigurations());
     }
 }
