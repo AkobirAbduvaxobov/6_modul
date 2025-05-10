@@ -3,68 +3,68 @@ using ToDoList.Server.Configurations;
 using ToDoList.Server.Filters;
 using ToDoList.Server.Middlewares;
 
-namespace ToDoList.Server
+namespace ToDoList.Server;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var builder = WebApplication.CreateBuilder(args);
+
+        // Add services to the container.
+
+        builder.ConfigureSerilog();
+
+        builder.Services.AddControllers(options =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            options.Filters.Add<ApiExceptionFilterAttribute>();
+            options.Filters.Add<ToDoListCountHeaderFilter>();
+        });
 
-            // Add services to the container.
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Configure();
+        builder.Configuration();
+        builder.ConfigurationJwtAuth();
 
-            builder.ConfigureSerilog();
-
-            builder.Services.AddControllers(options =>
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
             {
-                options.Filters.Add<ApiExceptionFilterAttribute>();
-                options.Filters.Add<ToDoListCountHeaderFilter>();
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
             });
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Configure();
-            builder.Configuration();
-
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                });
-            });
+        });
 
 
-            var app = builder.Build();
+        var app = builder.Build();
+        app.UseGlobalExceptionHandling();
+        app.UseMiddleware<RequestDurationMiddleware>();
 
-            app.UseMiddleware<RequestDurationMiddleware>();
+        //app.Use(async (context, next) =>
+        //{
 
-            //app.Use(async (context, next) =>
-            //{
+        //    await next();
+        //});
 
-            //    await next();
-            //});
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.UseCors("AllowAll");
-
-
-            app.MapControllers();
-
-            app.Run();
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
+
+        app.UseHttpsRedirection();
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseCors("AllowAll");
+
+
+        app.MapControllers();
+
+        app.Run();
     }
 }

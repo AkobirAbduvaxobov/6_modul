@@ -42,4 +42,19 @@ public class UserRepository : IUserRepository
 
         return user;
     }
+
+    public async Task UpdateUserRoleAsync(long userId, UserRole userRole)
+    {
+        var user = await SelectUserByIdAsync(userId);
+        user.Role = userRole;
+        MainContext.Users.Update(user);
+        await MainContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteUserByIdAsync(long userId)
+    {
+        var user = await SelectUserByIdAsync(userId);
+        MainContext.Users.Remove(user); 
+        await MainContext.SaveChangesAsync();
+    }
 }

@@ -21,6 +21,20 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
             code = 401; // Not found
         }
 
+        if (actionExecutedContext.Exception is AuthException)
+        {
+            code = 401; // Not found
+        }
+
+        if (actionExecutedContext.Exception is NotAllowedException)
+        {
+            code = 403; // Not found
+        }
+
+
+
+
+
 
         actionExecutedContext.HttpContext.Response.StatusCode = code;
 
