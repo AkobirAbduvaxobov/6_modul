@@ -68,6 +68,11 @@ public class AdoNetToDoItemRepository : IToDoItemRepository
         throw new NotImplementedException();
     }
 
+    public Task<IQueryable<ToDoItem>> SelectAllToDoItems()
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<ICollection<ToDoItem>> SelectAllToDoItemsAsync(int skip, int take)
     {
         var items = new List<ToDoItem>();
@@ -302,5 +307,10 @@ public class AdoNetToDoItemRepository : IToDoItemRepository
                 await cmd.ExecuteNonQueryAsync();
             }
         }
+    }
+
+    IQueryable<ToDoItem> IToDoItemRepository.SelectAllToDoItems()
+    {
+        throw new NotImplementedException();
     }
 }

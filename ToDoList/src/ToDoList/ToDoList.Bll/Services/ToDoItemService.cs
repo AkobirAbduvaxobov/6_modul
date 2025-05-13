@@ -5,6 +5,7 @@ using ToDoList.Errors;
 using ToDoList.Bll.DTOs;
 using ToDoList.Dal.Entity;
 using ToDoList.Repository.ToDoItemRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToDoList.Bll.Services
 {
@@ -25,6 +26,46 @@ namespace ToDoList.Bll.Services
             _logger = logger;
         }
 
+        public async Task<long> AddToDoItemAsync(ToDoItemCreateDto toDoItem, long userId)
+        {
+            var validationResult = _toDoItemCreateDtoValidator.Validate(toDoItem);
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+
+            ArgumentNullException.ThrowIfNull(toDoItem);
+            var convert = _mapper.Map<ToDoItem>(toDoItem);
+            convert.UserId = userId;
+
+            var id = await _toDoItemRepository.InsertToDoItemAsync(convert);
+            return id;
+        }
+
+        public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take, long userId)
+        {
+            var query = _toDoItemRepository.SelectAllToDoItems();
+            query = query.Where(x => x.UserId == userId);
+            query = query.Skip(skip).Take(take);
+
+            var toDoItems = await query.ToListAsync();
+            var totalCount = _toDoItemRepository.SelectAllToDoItems()
+                .Where(x => x.UserId == userId)
+                .Count();
+
+            var toDoItemDtos = toDoItems
+                .Select(item => _mapper.Map<ToDoItemGetDto>(item))
+                .ToList();
+
+            var getAllResponseModel = new GetAllResponseModel()
+            {
+                ToDoItemGetDtos = toDoItemDtos,
+                TotalCount = totalCount,
+            };
+
+            return getAllResponseModel;
+        }
+
         public async Task<long> AddToDoItemAsync(ToDoItemCreateDto toDoItem)
         {
             var validationResult = _toDoItemCreateDtoValidator.Validate(toDoItem);
@@ -39,6 +80,9 @@ namespace ToDoList.Bll.Services
             var id = await _toDoItemRepository.InsertToDoItemAsync(covert);
             return id;
         }
+
+
+
 
         public async Task DeleteToDoItemByIdAsync(long id)
         {
@@ -68,6 +112,7 @@ namespace ToDoList.Bll.Services
 
             return getAllResponseModel;
         }
+
 
         public async Task<List<ToDoItemGetDto>> GetByDueDateAsync(DateTime dueDate)
         {

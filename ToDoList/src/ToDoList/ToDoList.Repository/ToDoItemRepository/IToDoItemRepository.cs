@@ -1,4 +1,5 @@
-﻿using ToDoList.Dal.Entity;
+﻿using System.Runtime.CompilerServices;
+using ToDoList.Dal.Entity;
 
 namespace ToDoList.Repository.ToDoItemRepository;
 
@@ -16,7 +17,7 @@ public interface IToDoItemRepository
     Task<ICollection<ToDoItem>> SelectOverdueItemsAsync();
     Task<ICollection<ToDoItem>> GetUpcomingDeadlinesAsync();
     Task<int> SelectTotalCountAsync();
-
+    IQueryable<ToDoItem> SelectAllToDoItems();
 }
 
 

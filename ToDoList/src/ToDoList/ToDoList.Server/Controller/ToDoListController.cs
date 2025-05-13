@@ -24,10 +24,23 @@ public class ToDoListController : ControllerBase
     {
         _logger.LogInformation("AddToDoItem method worked");
 
-        var id = await _toDoItemService.AddToDoItemAsync(toDoItemCreateDto);
+        var userId = User.FindFirst("UserId")?.Value; 
+        
+
+        var id = await _toDoItemService.AddToDoItemAsync(toDoItemCreateDto, long.Parse(userId));
         return id;
     }
-    
+
+    [HttpGet("getAll")]
+    public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take)
+    {
+        _logger.LogInformation($"GetAllToDoItemsAsync method worked");
+
+        var userId = User.FindFirst("UserId")?.Value;
+
+        return await _toDoItemService.GetAllToDoItemsAsync(skip, take, long.Parse(userId));
+    }
+
     [HttpDelete("delete")]
     public async Task DeleteToDoItemByIdAsync(long id)
     {
@@ -43,17 +56,12 @@ public class ToDoListController : ControllerBase
     }
 
     
-    [HttpGet("getAll")]
-    public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take)
-    {
-        _logger.LogInformation($"GetAllToDoItemsAsync method worked");
 
-        return await _toDoItemService.GetAllToDoItemsAsync(skip, take);
-    }
 
     [HttpGet("getById")]
     public async Task<ToDoItemGetDto> GetToDoItemByIdAsync(long id)
     {
+        
         return await _toDoItemService.GetToDoItemByIdAsync(id);
     }
 

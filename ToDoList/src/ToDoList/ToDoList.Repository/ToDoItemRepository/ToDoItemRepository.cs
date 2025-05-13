@@ -38,6 +38,11 @@ public class ToDoItemRepository : IToDoItemRepository
         throw new NotImplementedException();
     }
 
+    public IQueryable<ToDoItem> SelectAllToDoItems()
+    {
+        return MainContext.ToDoItems;
+    }
+
     public async Task<ICollection<ToDoItem>> SelectAllToDoItemsAsync(int skip, int take)
     {
         if (skip < 0 || take <= 0)

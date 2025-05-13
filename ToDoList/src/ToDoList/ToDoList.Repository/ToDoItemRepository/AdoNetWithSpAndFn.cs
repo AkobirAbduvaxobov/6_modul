@@ -250,4 +250,14 @@ public class AdoNetWithSpAndFn : IToDoItemRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<IQueryable<ToDoItem>> SelectAllToDoItems()
+    {
+        throw new NotImplementedException();
+    }
+
+    IQueryable<ToDoItem> IToDoItemRepository.SelectAllToDoItems()
+    {
+        throw new NotImplementedException();
+    }
 }
