@@ -60,7 +60,7 @@ public class AuthService : IAuthService
             UserId = user.UserId
         };
 
-        await RefreshTokenRepository.AddRefreshToken(refreshTokenToDB);
+        await RefreshTokenRepository.AddRefreshTokenAsync(refreshTokenToDB);
 
         var loginResponseDto = new LoginResponseDto()
         {
@@ -74,6 +74,11 @@ public class AuthService : IAuthService
         return loginResponseDto;
     }
 
+    public async Task LogOutAsync(string token)
+    {
+        await RefreshTokenRepository.RemoveRefreshTokenAsync(token);
+    }
+
     public async Task<LoginResponseDto> RefreshTokenAsync(RefreshRequestDto request)
     {
         ClaimsPrincipal? principal = TokenService.GetPrincipalFromExpiredToken(request.AccessToken);
@@ -84,7 +89,7 @@ public class AuthService : IAuthService
         var userId = long.Parse(userClaim.Value);
 
 
-        var refreshToken = await RefreshTokenRepository.SelectRefreshToken(request.RefreshToken, userId);
+        var refreshToken = await RefreshTokenRepository.SelectRefreshTokenAsync(request.RefreshToken, userId);
         if (refreshToken == null || refreshToken.Expires < DateTime.UtcNow || refreshToken.IsRevoked)
             throw new UnauthorizedException("Invalid or expired refresh token.");
 
@@ -114,7 +119,7 @@ public class AuthService : IAuthService
             UserId = user.UserId
         };
 
-        await RefreshTokenRepository.AddRefreshToken(refreshTokenToDB);
+        await RefreshTokenRepository.AddRefreshTokenAsync(refreshTokenToDB);
 
         return new LoginResponseDto
         {

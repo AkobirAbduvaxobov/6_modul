@@ -4,6 +4,7 @@ namespace ToDoList.Repository.ToDoItemRepository;
 
 public interface IRefreshTokenRepository
 {
-    Task AddRefreshToken(RefreshToken refreshToken);
-    Task<RefreshToken> SelectRefreshToken(string refreshToken, long userId);
+    Task AddRefreshTokenAsync(RefreshToken refreshToken);
+    Task<RefreshToken> SelectRefreshTokenAsync(string refreshToken, long userId);
+    Task RemoveRefreshTokenAsync(string token);
 }

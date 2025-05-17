@@ -1,5 +1,6 @@
 using Serilog;
 using ToDoList.Server.Configurations;
+using ToDoList.Server.Endpoints;
 using ToDoList.Server.Filters;
 using ToDoList.Server.Middlewares;
 
@@ -65,6 +66,11 @@ public class Program
 
         app.MapControllers();
 
+        app.MapGet("/hello", () => "Hello, World!")
+        .WithName("HelloEndpoint")
+        .WithTags("Custom Section");
+
+        app.MapUserEndpoints();  // Register your minimal User APIs
         app.Run();
     }
 }

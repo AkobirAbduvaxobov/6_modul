@@ -32,4 +32,10 @@ public class AuthController : ControllerBase
     {
         return await AuthService.RefreshTokenAsync(request);
     }
+
+    [HttpDelete("logOut")]
+    public async Task LogOut(string token)
+    {
+        await AuthService.LogOutAsync(token);
+    }
 }
