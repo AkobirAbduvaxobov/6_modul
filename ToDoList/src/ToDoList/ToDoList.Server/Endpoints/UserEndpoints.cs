@@ -10,7 +10,7 @@ public static class UserEndpoints
 {
     public static void MapUserEndpoints(this WebApplication app)
     {
-        var userGroup = app.MapGroup("/api/user")
+        var userGroup = app.MapGroup("/api/admin")
             .RequireAuthorization()       // Require [Authorize] globally for this group
             .WithTags("User Management"); // Swagger section name
 

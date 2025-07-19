@@ -4,27 +4,35 @@ public class Program
 {
     static void Main(string[] args)
     {
-        var s = new Solution();
-        
-        /// 10 9 9 9 9 8 7 6 5 4
+       
+
+
     }
 }
 
 public class Solution
 {
-    public int SearchInsert(int[] nums, int target)
+    public IList<IList<int>> Combine(int n, int k)
     {
-        // [1,3,5,6, 10, 20, 90] 80
-
-        if (nums[0] >= target) return 0;
-        if (nums[nums.Count() - 1] < target) return nums.Count();
-
-        for (var i = 1; i < nums.Count(); i++)
+        IList<IList<int>> result = new List<IList<int>>();
+        int position = 0;
+        int[] current = new int[k];
+        while (0 <= position)
         {
-            if (nums[i] >= target) return i;
-
+            current[position]++;
+            if (n < current[position])
+            {
+                position--;
+            }
+            else if (position == k - 1)
+            {
+                result.Add(current.ToArray());
+            }
+            else
+            {
+                current[++position] = current[position - 1];
+            }
         }
-
-        return 0;
+        return result;
     }
 }
