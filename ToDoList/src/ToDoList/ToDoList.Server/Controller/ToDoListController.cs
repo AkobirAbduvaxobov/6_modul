@@ -6,7 +6,7 @@ using ToDoList.Bll.Services;
 namespace ToDoList.Server.Controller;
 
 [Authorize]
-[Route("api/toDoList")]
+[Route("api/todo-list")]
 [ApiController]
 public class ToDoListController : ControllerBase
 {
@@ -31,7 +31,7 @@ public class ToDoListController : ControllerBase
         return id;
     }
 
-    [HttpGet("getAll")]
+    [HttpGet("get-all")]
     public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take)
     {
         _logger.LogInformation($"GetAllToDoItemsAsync method worked");

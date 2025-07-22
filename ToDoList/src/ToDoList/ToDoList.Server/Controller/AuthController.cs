@@ -15,7 +15,7 @@ public class AuthController : ControllerBase
         AuthService = authService;
     }
 
-    [HttpPost("signUp")] 
+    [HttpPost("sign-up")] 
     public async Task<long> SignUp(UserCreateDto userCreateDto)
     {
         return await AuthService.SignUpUserAsync(userCreateDto);        
@@ -27,13 +27,13 @@ public class AuthController : ControllerBase
         return await AuthService.LoginUserAsync(userLoginDto);
     }
 
-    [HttpPost("refreshToken")]
+    [HttpPost("refresh-token")]
     public async Task<LoginResponseDto> RefreshToken(RefreshRequestDto request)
     {
         return await AuthService.RefreshTokenAsync(request);
     }
 
-    [HttpDelete("logOut")]
+    [HttpDelete("log-out")]
     public async Task LogOut(string token)
     {
         await AuthService.LogOutAsync(token);
