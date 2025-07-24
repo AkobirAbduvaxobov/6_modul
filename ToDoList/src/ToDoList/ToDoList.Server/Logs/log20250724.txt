@@ -1,0 +1,221 @@
+2025-07-24 08:24:25.557 +05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-07-24 08:24:25.686 +05:00 [DBG] Hosting starting
+2025-07-24 08:24:25.695 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-24 08:24:25.702 +05:00 [DBG] Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-40830bd6-a8ec-4dda-a777-3c7ac73ab121.xml'.
+2025-07-24 08:24:25.720 +05:00 [DBG] Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-55b2a426-b1f1-456d-a8a1-fca671786620.xml'.
+2025-07-24 08:24:25.731 +05:00 [DBG] Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-7209a04c-ca79-4b09-8b92-672f15856e1a.xml'.
+2025-07-24 08:24:25.750 +05:00 [DBG] Found key {40830bd6-a8ec-4dda-a777-3c7ac73ab121}.
+2025-07-24 08:24:25.752 +05:00 [DBG] Found key {55b2a426-b1f1-456d-a8a1-fca671786620}.
+2025-07-24 08:24:25.752 +05:00 [DBG] Found key {7209a04c-ca79-4b09-8b92-672f15856e1a}.
+2025-07-24 08:24:25.756 +05:00 [DBG] Considering key {55b2a426-b1f1-456d-a8a1-fca671786620} with expiration date 2025-08-06 07:19:15Z as default key.
+2025-07-24 08:24:25.758 +05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-07-24 08:24:25.759 +05:00 [DBG] Decrypting secret element using Windows DPAPI.
+2025-07-24 08:24:25.761 +05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-07-24 08:24:25.763 +05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2025-07-24 08:24:25.763 +05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2025-07-24 08:24:25.764 +05:00 [DBG] Using key {55b2a426-b1f1-456d-a8a1-fca671786620} as the default key.
+2025-07-24 08:24:25.764 +05:00 [DBG] Key ring with default key {55b2a426-b1f1-456d-a8a1-fca671786620} was loaded during application startup.
+2025-07-24 08:24:26.186 +05:00 [DBG] Connection id "0HNEAC6BQRDK5" accepted.
+2025-07-24 08:24:26.186 +05:00 [DBG] Connection id "0HNEAC6BQRDK6" accepted.
+2025-07-24 08:24:26.188 +05:00 [DBG] Connection id "0HNEAC6BQRDK5" started.
+2025-07-24 08:24:26.188 +05:00 [DBG] Connection id "0HNEAC6BQRDK6" started.
+2025-07-24 08:24:26.193 +05:00 [INF] Now listening on: https://localhost:7088
+2025-07-24 08:24:26.193 +05:00 [INF] Now listening on: http://localhost:5195
+2025-07-24 08:24:26.194 +05:00 [DBG] Loaded hosting startup assembly ToDoList.Server
+2025-07-24 08:24:26.194 +05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2025-07-24 08:24:26.194 +05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-07-24 08:24:26.194 +05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2025-07-24 08:24:26.362 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-24 08:24:26.362 +05:00 [INF] Hosting environment: Development
+2025-07-24 08:24:26.362 +05:00 [INF] Content root path: D:\Work\Groups\G_10\projects\6_modul\ToDoList\src\ToDoList\ToDoList.Server
+2025-07-24 08:24:26.362 +05:00 [DBG] Hosting started
+2025-07-24 08:24:28.035 +05:00 [DBG] Connection id "0HNEAC6BQRDK7" accepted.
+2025-07-24 08:24:28.035 +05:00 [DBG] Connection id "0HNEAC6BQRDK7" started.
+2025-07-24 08:24:28.154 +05:00 [DBG] Connection id "0HNEAC6BQRDK7" received FIN.
+2025-07-24 08:24:28.156 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" accepted.
+2025-07-24 08:24:28.156 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" started.
+2025-07-24 08:24:28.164 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:24:28.173 +05:00 [DBG] Connection 0HNEAC6BQRDK8 established using the following protocol: "Tls13"
+2025-07-24 08:24:28.185 +05:00 [DBG] Connection id "0HNEAC6BQRDK7" stopped.
+2025-07-24 08:24:28.187 +05:00 [DBG] Connection id "0HNEAC6BQRDK7" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:24:28.246 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger - null null
+2025-07-24 08:24:28.405 +05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-07-24 08:24:28.431 +05:00 [DBG] No candidates found for the request path '/swagger'
+2025-07-24 08:24:28.432 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.444 +05:00 [INF] Request to /swagger took 0.006 seconds with status code 301
+2025-07-24 08:24:28.449 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger - 301 0 null 213.7712ms
+2025-07-24 08:24:28.450 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" received FIN.
+2025-07-24 08:24:28.453 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" accepted.
+2025-07-24 08:24:28.453 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" started.
+2025-07-24 08:24:28.454 +05:00 [DBG] The connection queue processing loop for 0HNEAC6BQRDK8 completed.
+2025-07-24 08:24:28.456 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" is closed. The last processed stream ID was 1.
+2025-07-24 08:24:28.457 +05:00 [DBG] Connection 0HNEAC6BQRDK9 established using the following protocol: "Tls13"
+2025-07-24 08:24:28.457 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:24:28.459 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/index.html - null null
+2025-07-24 08:24:28.461 +05:00 [DBG] Connection id "0HNEAC6BQRDK8" stopped.
+2025-07-24 08:24:28.464 +05:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2025-07-24 08:24:28.464 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.513 +05:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2025-07-24 08:24:28.514 +05:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2025-07-24 08:24:28.535 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" accepted.
+2025-07-24 08:24:28.536 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" started.
+2025-07-24 08:24:28.536 +05:00 [INF] Request to /swagger/index.html took 0.07 seconds with status code 200
+2025-07-24 08:24:28.537 +05:00 [DBG] Response markup was updated to include Browser Link script injection.
+2025-07-24 08:24:28.538 +05:00 [DBG] Response markup was updated to include browser refresh script injection.
+2025-07-24 08:24:28.539 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/index.html - 200 null text/html;charset=utf-8 80.6863ms
+2025-07-24 08:24:28.547 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" received FIN.
+2025-07-24 08:24:28.548 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" is closed. The last processed stream ID was 1.
+2025-07-24 08:24:28.548 +05:00 [DBG] The connection queue processing loop for 0HNEAC6BQRDK9 completed.
+2025-07-24 08:24:28.548 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:24:28.548 +05:00 [DBG] Connection 0HNEAC6BQRDKA established using the following protocol: "Tls13"
+2025-07-24 08:24:28.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/swagger-ui.css - null null
+2025-07-24 08:24:28.550 +05:00 [DBG] No candidates found for the request path '/swagger/swagger-ui.css'
+2025-07-24 08:24:28.550 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.550 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-24 08:24:28.550 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/swagger-ui-bundle.js - null null
+2025-07-24 08:24:28.550 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-24 08:24:28.550 +05:00 [DBG] Connection id "0HNEAC6BQRDK9" stopped.
+2025-07-24 08:24:28.551 +05:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-bundle.js'
+2025-07-24 08:24:28.551 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.551 +05:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-standalone-preset.js'
+2025-07-24 08:24:28.551 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.551 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/_vs/browserLink - null null
+2025-07-24 08:24:28.569 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 19.5887ms
+2025-07-24 08:24:28.604 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-24 08:24:28.604 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-24 08:24:28.605 +05:00 [INF] Request to /swagger/swagger-ui.css took 0.054 seconds with status code 200
+2025-07-24 08:24:28.605 +05:00 [INF] Request to /swagger/swagger-ui-standalone-preset.js took 0.053 seconds with status code 200
+2025-07-24 08:24:28.605 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/swagger-ui.css - 200 143943 text/css 55.8345ms
+2025-07-24 08:24:28.606 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 56.0248ms
+2025-07-24 08:24:28.628 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-24 08:24:28.628 +05:00 [INF] Request to /swagger/swagger-ui-bundle.js took 0.077 seconds with status code 200
+2025-07-24 08:24:28.629 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 78.5596ms
+2025-07-24 08:24:28.654 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.6868ms
+2025-07-24 08:24:28.769 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/v1/swagger.json - null null
+2025-07-24 08:24:28.770 +05:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2025-07-24 08:24:28.770 +05:00 [DBG] Request did not match any endpoints
+2025-07-24 08:24:28.781 +05:00 [INF] Request to /swagger/v1/swagger.json took 0.01 seconds with status code 200
+2025-07-24 08:24:28.781 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.1536ms
+2025-07-24 08:24:29.950 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" received FIN.
+2025-07-24 08:24:29.951 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" is closed. The last processed stream ID was 11.
+2025-07-24 08:24:29.952 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:24:29.953 +05:00 [DBG] The connection queue processing loop for 0HNEAC6BQRDKA completed.
+2025-07-24 08:24:29.954 +05:00 [DBG] Connection id "0HNEAC6BQRDKA" stopped.
+2025-07-24 08:24:36.205 +05:00 [DBG] Authentication of the HTTPS connection timed out.
+2025-07-24 08:24:36.205 +05:00 [DBG] Authentication of the HTTPS connection timed out.
+2025-07-24 08:24:36.206 +05:00 [DBG] Connection id "0HNEAC6BQRDK5" stopped.
+2025-07-24 08:24:36.206 +05:00 [DBG] Connection id "0HNEAC6BQRDK6" stopped.
+2025-07-24 08:24:36.207 +05:00 [DBG] Connection id "0HNEAC6BQRDK6" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:24:36.207 +05:00 [DBG] Connection id "0HNEAC6BQRDK5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.055 +05:00 [DBG] Connection id "0HNEAC6BQRDKB" accepted.
+2025-07-24 08:25:51.056 +05:00 [DBG] Connection id "0HNEAC6BQRDKB" started.
+2025-07-24 08:25:51.064 +05:00 [DBG] Connection id "0HNEAC6BQRDKC" accepted.
+2025-07-24 08:25:51.065 +05:00 [DBG] Connection id "0HNEAC6BQRDKC" started.
+2025-07-24 08:25:51.090 +05:00 [DBG] Connection id "0HNEAC6BQRDKD" accepted.
+2025-07-24 08:25:51.092 +05:00 [DBG] Connection id "0HNEAC6BQRDKD" started.
+2025-07-24 08:25:51.093 +05:00 [DBG] Connection id "0HNEAC6BQRDKE" accepted.
+2025-07-24 08:25:51.097 +05:00 [DBG] Connection id "0HNEAC6BQRDKF" accepted.
+2025-07-24 08:25:51.097 +05:00 [DBG] Connection id "0HNEAC6BQRDKE" started.
+2025-07-24 08:25:51.102 +05:00 [DBG] Connection id "0HNEAC6BQRDKF" started.
+2025-07-24 08:25:51.112 +05:00 [DBG] Connection id "0HNEAC6BQRDKG" accepted.
+2025-07-24 08:25:51.115 +05:00 [DBG] Connection id "0HNEAC6BQRDKG" started.
+2025-07-24 08:25:51.126 +05:00 [DBG] Connection id "0HNEAC6BQRDKH" accepted.
+2025-07-24 08:25:51.127 +05:00 [DBG] Connection id "0HNEAC6BQRDKH" started.
+2025-07-24 08:25:51.361 +05:00 [DBG] Connection id "0HNEAC6BQRDKB" received FIN.
+2025-07-24 08:25:51.366 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.368 +05:00 [DBG] Connection id "0HNEAC6BQRDKB" stopped.
+2025-07-24 08:25:51.369 +05:00 [DBG] Connection id "0HNEAC6BQRDKB" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.440 +05:00 [DBG] Connection id "0HNEAC6BQRDKC" received FIN.
+2025-07-24 08:25:51.453 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.457 +05:00 [DBG] Connection id "0HNEAC6BQRDKC" stopped.
+2025-07-24 08:25:51.458 +05:00 [DBG] Connection id "0HNEAC6BQRDKC" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.465 +05:00 [DBG] Connection id "0HNEAC6BQRDKD" received FIN.
+2025-07-24 08:25:51.469 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.471 +05:00 [DBG] Connection id "0HNEAC6BQRDKD" stopped.
+2025-07-24 08:25:51.477 +05:00 [DBG] Connection id "0HNEAC6BQRDKD" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.485 +05:00 [DBG] Connection id "0HNEAC6BQRDKE" received FIN.
+2025-07-24 08:25:51.491 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.492 +05:00 [DBG] Connection id "0HNEAC6BQRDKE" stopped.
+2025-07-24 08:25:51.494 +05:00 [DBG] Connection id "0HNEAC6BQRDKE" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.502 +05:00 [DBG] Connection id "0HNEAC6BQRDKF" received FIN.
+2025-07-24 08:25:51.563 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.571 +05:00 [DBG] Connection id "0HNEAC6BQRDKG" received FIN.
+2025-07-24 08:25:51.572 +05:00 [DBG] Connection id "0HNEAC6BQRDKF" stopped.
+2025-07-24 08:25:51.624 +05:00 [DBG] Connection id "0HNEAC6BQRDKH" received FIN.
+2025-07-24 08:25:51.617 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.639 +05:00 [DBG] Connection id "0HNEAC6BQRDKF" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.661 +05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-07-24 08:25:51.667 +05:00 [DBG] Connection id "0HNEAC6BQRDKG" stopped.
+2025-07-24 08:25:51.669 +05:00 [DBG] Connection id "0HNEAC6BQRDKG" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:51.670 +05:00 [DBG] Connection id "0HNEAC6BQRDKH" stopped.
+2025-07-24 08:25:51.694 +05:00 [DBG] Connection id "0HNEAC6BQRDKH" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-07-24 08:25:53.030 +05:00 [DBG] Connection id "0HNEAC6BQRDKI" accepted.
+2025-07-24 08:25:53.030 +05:00 [DBG] Connection id "0HNEAC6BQRDKI" started.
+2025-07-24 08:25:53.046 +05:00 [DBG] Connection 0HNEAC6BQRDKI established using the following protocol: "Tls13"
+2025-07-24 08:25:53.053 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7088/api/todo-list/get-all?skip=0&take=20 - null null
+2025-07-24 08:25:53.066 +05:00 [DBG] 1 candidate(s) found for the request path '/api/todo-list/get-all'
+2025-07-24 08:25:53.069 +05:00 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-07-24 08:25:53.072 +05:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-07-24 08:25:56.289 +05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2025-07-24 08:25:56.296 +05:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-07-24 08:25:56.297 +05:00 [INF] CORS policy execution successful.
+2025-07-24 08:25:56.299 +05:00 [DBG] The request is a preflight request.
+2025-07-24 08:25:56.302 +05:00 [INF] Request to /api/todo-list/get-all took 3.229 seconds with status code 204
+2025-07-24 08:25:56.303 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7088/api/todo-list/get-all?skip=0&take=20 - 204 null null 3249.3208ms
+2025-07-24 08:25:56.308 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7088/api/todo-list/get-all?skip=0&take=20 - null null
+2025-07-24 08:25:56.313 +05:00 [DBG] 1 candidate(s) found for the request path '/api/todo-list/get-all'
+2025-07-24 08:25:56.326 +05:00 [DBG] Endpoint 'ToDoList.Server.Controller.ToDoListController.GetAllToDoItemsAsync (ToDoList.Server)' with route pattern 'api/todo-list/get-all' is valid for the request path '/api/todo-list/get-all'
+2025-07-24 08:25:56.327 +05:00 [DBG] Request matched endpoint 'ToDoList.Server.Controller.ToDoListController.GetAllToDoItemsAsync (ToDoList.Server)'
+2025-07-24 08:25:56.328 +05:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-07-24 08:25:56.481 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/23/2025 7:04:55 AM', Current time (UTC): '7/24/2025 3:25:56 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-24 08:25:56.483 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/23/2025 7:04:55 AM', Current time (UTC): '7/24/2025 3:25:56 AM'.
+2025-07-24 08:25:56.488 +05:00 [DBG] Policy authentication schemes  did not succeed
+2025-07-24 08:25:56.495 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-24 08:25:56.509 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-24 08:25:56.509 +05:00 [INF] Request to /api/todo-list/get-all took 0.181 seconds with status code 401
+2025-07-24 08:25:56.510 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7088/api/todo-list/get-all?skip=0&take=20 - 401 0 null 202.3317ms

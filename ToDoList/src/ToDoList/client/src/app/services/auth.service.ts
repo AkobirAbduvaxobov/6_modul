@@ -8,11 +8,11 @@ import { LoginDto } from '../api/interfaces/login-dto';
 import { LoginResponseDto } from '../api/interfaces/login-response-dto';
 import { LoginResponseModel } from './models/login-response-model';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from 'express';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    router: any;
-    constructor(private authApiService: AuthApiService) { }
+    constructor(private authApiService: AuthApiService, private router: Router ) { }
 
     public signUp(model: SignUpModel): Observable<number> {
         const dto = this.convertSignUpModelToDto(model);
@@ -23,7 +23,7 @@ export class AuthService {
         const dto = this.convertLoginModelToDto(model);
         return this.authApiService.login(dto).pipe(
             tap(responseDto => {
-                localStorage.setItem('accessToken', responseDto.accessToken);
+                localStorage.setItem('access_token', responseDto.accessToken);
                 localStorage.setItem('refresh_token', responseDto.refreshToken);
             }),
             map(responseDto => this.convertLoginResponseDtoToModel(responseDto))
@@ -38,7 +38,6 @@ export class AuthService {
         this.authApiService.logout(refreshToken).subscribe(() => {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
-            this.router.navigate(['/login']);
         });
     }
 
@@ -50,7 +49,7 @@ export class AuthService {
 
     public getAccessToken(): string | null {
         if (isPlatformBrowser(this.platformId)) {
-            return localStorage.getItem('accessToken');
+            return localStorage.getItem('access_token');
         }
         return null; 
     }

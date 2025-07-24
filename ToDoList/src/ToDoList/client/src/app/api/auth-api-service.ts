@@ -21,18 +21,18 @@ export class AuthApiService {
     return this.http.post<LoginResponseDto>(url, dto);
   }
 
-  public refreshToken(refreshToken: string, accessToken : string): Observable<LoginResponseDto> {
+  public refreshToken(refreshToken: string, accessToken: string): Observable<LoginResponseDto> {
     const url = `${this.apiUrl}/refresh-token`;
     return this.http.post<LoginResponseDto>(url, { refreshToken, accessToken });
-  }
-
-  public logout(refreshToken: string): Observable<void> {
-    const url = `${this.apiUrl}/log-out`;
-    return this.http.delete<void>(url, { body: { refreshToken } });
   }
 
   public testGetAll(): Observable<any> {
     const url = 'https://localhost:7088/api/todo-list/get-all?skip=0&take=20';
     return this.http.get<any>(url);
+  }
+
+  public logout(refreshToken: string): Observable<void> {
+    const url = `${this.apiUrl}/log-out?token=${refreshToken}`;
+    return this.http.delete<void>(url);
   }
 }

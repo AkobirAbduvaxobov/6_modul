@@ -66,6 +66,19 @@ namespace ToDoList.Bll.Services
             return getAllResponseModel;
         }
 
+        public async Task<List<ToDoItemGetDto>> GetAllToDoItemsAsync(long userId)
+        {
+            var query = _toDoItemRepository.SelectAllToDoItems();
+            query = query.Where(x => x.UserId == userId);
+            var toDoItems = await query.ToListAsync();
+            
+            var toDoItemDtos = toDoItems
+                .Select(item => _mapper.Map<ToDoItemGetDto>(item))
+                .ToList();
+
+            return toDoItemDtos;
+        }
+
         public async Task<long> AddToDoItemAsync(ToDoItemCreateDto toDoItem)
         {
             var validationResult = _toDoItemCreateDtoValidator.Validate(toDoItem);

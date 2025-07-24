@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(model).subscribe({
       next: (response) => {
+        
         console.log('Login successful:', response);
         this.router.navigate(['/']); 
       },

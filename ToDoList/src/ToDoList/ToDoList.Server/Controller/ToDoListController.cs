@@ -31,7 +31,7 @@ public class ToDoListController : ControllerBase
         return id;
     }
 
-    [HttpGet("get-all")]
+    [HttpGet("get-all-paginated")]
     public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take)
     {
         _logger.LogInformation($"GetAllToDoItemsAsync method worked");
@@ -39,6 +39,16 @@ public class ToDoListController : ControllerBase
         var userId = User.FindFirst("UserId")?.Value;
 
         return await _toDoItemService.GetAllToDoItemsAsync(skip, take, long.Parse(userId));
+    }
+
+    [HttpGet("get-all")]
+    public async Task<List<ToDoItemGetDto>> GetAllToDoItems()
+    {
+        _logger.LogInformation($"GetAllToDoItemsAsync method worked");
+
+        var userId = User.FindFirst("UserId")?.Value;
+
+        return await _toDoItemService.GetAllToDoItemsAsync(long.Parse(userId));
     }
 
     [HttpDelete("delete")]
