@@ -3,6 +3,7 @@ import { ItemService } from '../../services/item.service';
 import { ItemGetModel } from '../../services/models/item-get-model';
 import { ItemCreateModel } from '../../services/models/item-create-model';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,9 +17,9 @@ export class TodoListComponent implements OnInit {
   public currentItem: ItemCreateModel = new ItemCreateModel();
   public isEditMode: boolean = false;
   public modalTitle: string = 'Create ToDo Item';
-  public isModalOpen: boolean = false;  
+  public isModalOpen: boolean = false;
 
-  constructor(private itemService: ItemService, private authService: AuthService) {}
+  constructor(private itemService: ItemService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadItems();
@@ -31,9 +32,26 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  public logout() {
+  public logout1() {
     this.authService.logout();
   }
+
+  public logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error('Logout failed', err);
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
 
   public openCreateModal(): void {
     this.currentItem = new ItemCreateModel();
