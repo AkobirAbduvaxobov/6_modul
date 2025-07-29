@@ -36,6 +36,8 @@
             Created: {{ item.createdAt | date: 'short' }}
           </p>
           <button class="btn btn-outline-primary btn-sm" (click)="openEditModal(item)">Edit</button>
+          <button class="btn btn-outline-danger btn-sm ms-2" (click)="deleteItem(item)">Delete</button>
+          <button class="btn btn-outline-success btn-sm ms-2" (click)="completeItem(item)">Complete</button>
         </div>
       </div>
     </div>

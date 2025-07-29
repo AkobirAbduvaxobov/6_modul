@@ -65,9 +65,6 @@ public class ToDoListController : ControllerBase
         return _toDoItemService.GetCompletedAsync(skip, take);
     }
 
-    
-
-
     [HttpGet("getById")]
     public async Task<ToDoItemGetDto> GetToDoItemByIdAsync(long id)
     {
@@ -88,10 +85,13 @@ public class ToDoListController : ControllerBase
     }
 
     [HttpPut("update")]
-    public async Task UpdateToDoItemAsync(ToDoItemUpdateDto toDoItemUpdateDto)
+    public async Task UpdateToDoItemAsync([FromBody] ToDoItemUpdateDto toDoItemUpdateDto)
     {
         _logger.LogInformation("UpdateToDoItemAsync method worked");
 
-        await _toDoItemService.UpdateToDoItemAsync(toDoItemUpdateDto);
+        var userId = User.FindFirst("UserId")?.Value;
+        var id = long.Parse(userId);
+
+        await _toDoItemService.UpdateToDoItemAsync(toDoItemUpdateDto, id);
     }
 }

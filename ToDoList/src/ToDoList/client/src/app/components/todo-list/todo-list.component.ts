@@ -4,6 +4,7 @@ import { ItemGetModel } from '../../services/models/item-get-model';
 import { ItemCreateModel } from '../../services/models/item-create-model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ItemUpdateModel } from '../../services/models/item-update-model';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class TodoListComponent implements OnInit {
   public items: ItemGetModel[] = [];
-  public currentItem: ItemCreateModel = new ItemCreateModel();
+  public currentItem: ItemCreateModel | ItemUpdateModel = new ItemCreateModel();
   public isEditMode: boolean = false;
   public modalTitle: string = 'Create ToDo Item';
   public isModalOpen: boolean = false;
@@ -52,7 +53,6 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-
   public openCreateModal(): void {
     this.currentItem = new ItemCreateModel();
     this.isEditMode = false;
@@ -60,7 +60,7 @@ export class TodoListComponent implements OnInit {
     this.openModal();
   }
 
-  public openEditModal(item: ItemGetModel): void {
+  public openEditModal1(item: ItemGetModel): void {
     this.currentItem = {
       title: item.title,
       description: item.description,
@@ -71,11 +71,58 @@ export class TodoListComponent implements OnInit {
     this.openModal();
   }
 
+  public openEditModal(item: ItemGetModel): void {
+    this.currentItem = {
+      toDoItemId: item.toDoItemId,
+      title: item.title,
+      description: item.description,
+      dueDate: new Date(item.dueDate),
+      isCompleted: item.isCompleted
+    } as ItemUpdateModel;
+    this.isEditMode = true;
+    this.modalTitle = 'Edit ToDo Item';
+    this.openModal();
+  }
+
+  public deleteItem(item: ItemGetModel): void {
+    this.itemService.deleteItem(item.toDoItemId).subscribe({
+      next: () => {
+        this.loadItems();
+      },
+      error: (err) => {
+        this.loadItems();
+      }
+    });
+  }
+
+  public completeItem(item: ItemGetModel): void {
+    this.currentItem = {
+      toDoItemId: item.toDoItemId,
+      title: item.title,
+      description: item.description,
+      dueDate: new Date(item.dueDate),
+      isCompleted: !item.isCompleted
+    } as ItemUpdateModel;
+
+    this.itemService.updateItem(this.currentItem as ItemUpdateModel).subscribe({
+      next: () => {
+        this.loadItems();
+      },
+      error: err => console.error(err)
+    });
+  }
+
   public saveItem(): void {
     if (this.isEditMode) {
-      // call update API here
+      this.itemService.updateItem(this.currentItem as ItemUpdateModel).subscribe({
+        next: () => {
+          this.loadItems();
+          this.closeModal();
+        },
+        error: err => console.error(err)
+      });
     } else {
-      this.itemService.addItem(this.currentItem).subscribe({
+      this.itemService.addItem(this.currentItem as ItemCreateModel).subscribe({
         next: () => {
           this.loadItems();
           this.closeModal();

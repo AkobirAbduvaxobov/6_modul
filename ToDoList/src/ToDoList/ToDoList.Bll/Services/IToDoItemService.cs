@@ -10,7 +10,7 @@ namespace ToDoList.Bll.Services
         Task<List<ToDoItemGetDto>> GetAllToDoItemsAsync(long userId);
         Task<long> AddToDoItemAsync(ToDoItemCreateDto toDoItem, long userId);
         Task DeleteToDoItemByIdAsync(long id);
-        Task UpdateToDoItemAsync(ToDoItemUpdateDto newItem);
+        Task UpdateToDoItemAsync(ToDoItemUpdateDto newItem, long userId);
         Task<GetAllResponseModel> GetCompletedAsync(int skip, int take);
         Task<GetAllResponseModel> GetIncompleteAsync(int skip, int take);
         Task<int> GetTotalCountAsync();

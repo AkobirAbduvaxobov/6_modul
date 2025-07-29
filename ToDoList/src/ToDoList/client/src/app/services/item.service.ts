@@ -5,6 +5,8 @@ import { ItemCreateModel } from './models/item-create-model';
 import { ItemCreateDto } from '../api/interfaces/item-create-dto';
 import { ItemGetDto } from '../api/interfaces/item-get-dto';
 import { ItemGetModel } from './models/item-get-model';
+import { ItemUpdateModel } from './models/item-update-model';
+import { ItemUpdateDto } from '../api/interfaces/item-update-dto';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {
@@ -14,6 +16,16 @@ export class ItemService {
     public addItem(model: ItemCreateModel): Observable<number> {
         const dto = this.convertItemCreateModelToDto(model);
         return this.itemApiService.addItem(dto);
+    }
+
+    public updateItem(model: ItemUpdateModel): Observable<void> {
+     
+        const dto = this.convertItemUpdateModelToDto(model);
+        return this.itemApiService.updateItem(dto);
+    }
+
+    public deleteItem(id: number): Observable<void> {
+        return this.itemApiService.deleteItem(id);
     }
 
     public getAllItems(): Observable<ItemGetModel[]> {
@@ -26,6 +38,16 @@ export class ItemService {
         return {
             title: model.title,
             description: model.description,
+            dueDate: model.dueDate.toString(),
+        };
+    }
+
+    private convertItemUpdateModelToDto(model: ItemUpdateModel): ItemUpdateDto {
+        return {
+            toDoItemId: model.toDoItemId,
+            title: model.title,
+            description: model.description,
+            isCompleted: model.isCompleted,
             dueDate: model.dueDate.toString(),
         };
     }

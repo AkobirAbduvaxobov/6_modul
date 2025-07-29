@@ -16,14 +16,15 @@ namespace ToDoList.Bll.Services
         private readonly IValidator<ToDoItemUpdateDto> _toDoItemUpdateDtoValidator;
         private readonly IMapper _mapper;
         private readonly ILogger<ToDoItemService> _logger;
-        
 
-        public ToDoItemService(IToDoItemRepository toDoItemRepository, IValidator<ToDoItemCreateDto> validator, IMapper mapper, ILogger<ToDoItemService> logger)
+
+        public ToDoItemService(IToDoItemRepository toDoItemRepository, IValidator<ToDoItemCreateDto> validator, IMapper mapper, ILogger<ToDoItemService> logger, IValidator<ToDoItemUpdateDto> toDoItemUpdateDtoValidator)
         {
             _toDoItemRepository = toDoItemRepository;
             _toDoItemCreateDtoValidator = validator;
             _mapper = mapper;
             _logger = logger;
+            _toDoItemUpdateDtoValidator = toDoItemUpdateDtoValidator;
         }
 
         public async Task<long> AddToDoItemAsync(ToDoItemCreateDto toDoItem, long userId)
@@ -184,15 +185,16 @@ namespace ToDoList.Bll.Services
             return await _toDoItemRepository.SelectTotalCountAsync();
         }
 
-        public async Task UpdateToDoItemAsync(ToDoItemUpdateDto newItem)
+        public async Task UpdateToDoItemAsync(ToDoItemUpdateDto newItem, long userId)
         {
             var validationResult = _toDoItemUpdateDtoValidator.Validate(newItem);
             if (!validationResult.IsValid)
             {
                 throw new ValidationException(validationResult.Errors);
             }
-
-            await _toDoItemRepository.UpdateToDoItemAsync(_mapper.Map<ToDoItem>(newItem));
+            var entity = _mapper.Map<ToDoItem>(newItem);
+            entity.UserId = userId;
+            await _toDoItemRepository.UpdateToDoItemAsync(entity);
         }
     }
 }
