@@ -36,7 +36,7 @@
             Created: {{ item.createdAt | date: 'short' }}
           </p>
           <button class="btn btn-outline-primary btn-sm" (click)="openEditModal(item)">Edit</button>
-          <button class="btn btn-outline-danger btn-sm ms-2" (click)="deleteItem(item)">Delete</button>
+          <button class="btn btn-outline-danger btn-sm ms-2" (click)="openDeleteModal(item)">Delete</button>
           <button class="btn btn-outline-success btn-sm ms-2" (click)="completeItem(item)">{{ item.isCompleted ? 'Uncomplete' : 'Complete' }}</button>
         </div>
       </div>
@@ -84,3 +84,23 @@
     </div>
   </div>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-backdrop" *ngIf="showDeleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="btn-close" (click)="cancelDelete()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong>{{ itemToDelete?.title }}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary me-2" (click)="cancelDelete()">Cancel</button>
+        <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
