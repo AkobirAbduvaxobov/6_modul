@@ -5,6 +5,9 @@ import { ItemCreateModel } from '../../services/models/item-create-model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ItemUpdateModel } from '../../services/models/item-update-model';
+import { Console } from 'node:console';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,34 +23,52 @@ export class TodoListComponent implements OnInit {
   public modalTitle: string = 'Create ToDo Item';
   public isModalOpen: boolean = false;
 
-  constructor(private itemService: ItemService, private authService: AuthService, private router: Router) { }
+  constructor(private itemService: ItemService,
+    private authService: AuthService,
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
+   
     this.loadItems();
+   
   }
 
   public loadItems(): void {
-    this.itemService.getAllItems().subscribe({
-      next: (data) => this.items = data,
-      error: (err) => console.error(err)
-    });
-  }
+  
+  this.spinner.show();
+  this.itemService.getAllItems().subscribe({
+    next: (data) => {
+      this.items = data;
+      this.spinner.hide(); // ✅ hide after success
+    },
+    error: (err) => {
+      console.error(err);
+      this.spinner.hide(); // ✅ hide after error too
+    }
+  });
+}
+
 
   public logout1() {
     this.authService.logout();
   }
 
   public logout(): void {
+    this.spinner.show();
     this.authService.logout().subscribe({
       next: () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        this.spinner.hide();
         this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Logout failed', err);
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        this.spinner.hide();
         this.router.navigate(['/login']);
       }
     });
@@ -79,18 +100,26 @@ export class TodoListComponent implements OnInit {
       dueDate: new Date(item.dueDate),
       isCompleted: item.isCompleted
     } as ItemUpdateModel;
+
     this.isEditMode = true;
     this.modalTitle = 'Edit ToDo Item';
     this.openModal();
   }
 
   public deleteItem(item: ItemGetModel): void {
+    this.spinner.show();
     this.itemService.deleteItem(item.toDoItemId).subscribe({
       next: () => {
+        this.spinner.hide();
+        this.toastr.success('Data deleted successfully!', 'Success');
         this.loadItems();
+        
       },
       error: (err) => {
+        this.spinner.hide();
+        this.toastr.error('Failed to delete data!', 'Error');
         this.loadItems();
+       
       }
     });
   }
@@ -103,31 +132,54 @@ export class TodoListComponent implements OnInit {
       dueDate: new Date(item.dueDate),
       isCompleted: !item.isCompleted
     } as ItemUpdateModel;
-
+        
+    this.spinner.show();
     this.itemService.updateItem(this.currentItem as ItemUpdateModel).subscribe({
       next: () => {
+        this.spinner.hide();
         this.loadItems();
+       
       },
-      error: err => console.error(err)
+      error: err => 
+      {
+        this.toastr.error('Failed to update item status!', 'Error');
+        this.spinner.hide();
+      }
     });
   }
 
   public saveItem(): void {
+    this.spinner.show();
     if (this.isEditMode) {
       this.itemService.updateItem(this.currentItem as ItemUpdateModel).subscribe({
         next: () => {
+          this.toastr.success('Data updated successfully!', 'Success');
+          this.spinner.hide();
           this.loadItems();
           this.closeModal();
+          
         },
-        error: err => console.error(err)
+        error: (err) => 
+        {
+          this.toastr.error('Failed to update data!', 'Error');
+          this.closeModal();
+          this.spinner.hide();
+        }
       });
     } else {
       this.itemService.addItem(this.currentItem as ItemCreateModel).subscribe({
-        next: () => {
+        next: (response) => {
+          this.spinner.hide();
+          this.toastr.success('Data saved successfully!', 'Success');
           this.loadItems();
           this.closeModal();
         },
-        error: err => console.error(err)
+        error: (err) => 
+        {
+          this.toastr.error('Failed to save data!', 'Error');
+          this.closeModal();
+          this.spinner.hide();
+        }
       });
     }
   }

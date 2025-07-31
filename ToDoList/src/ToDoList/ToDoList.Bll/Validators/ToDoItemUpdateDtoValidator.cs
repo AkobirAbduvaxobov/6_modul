@@ -23,7 +23,6 @@ public class ToDoItemUpdateDtoValidator : AbstractValidator<ToDoItemUpdateDto>
         RuleFor(x => x.DueDate)
             .NotEmpty()
             .WithMessage("Due date is required.")
-            .GreaterThan(DateTime.Now)
             .WithMessage("Due date must be in the future.");
     }
 }

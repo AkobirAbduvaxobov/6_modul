@@ -5,7 +5,7 @@
 
 
 <div class="container mt-4">
-  <h2 class="mb-3">ToDo List</h2>
+  <!-- <h2 class="mb-3">ToDo List</h2> -->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container-fluid">
@@ -16,7 +16,7 @@
   </div>
 </nav>
 
-  <button class="btn btn-primary mb-3" (click)="openCreateModal()">
+  <button class="btn btn-primary mb-3 mt-2" (click)="openCreateModal()">
     + Create New Item
   </button>
 
@@ -26,7 +26,7 @@
         <div class="card-body">
           <h5 class="card-title">
             {{ item.title }} 
-            <span class="badge bg-success" *ngIf="item.isCompleted">Done</span>
+            <span class="badge bg-success" *ngIf="item.isCompleted">Completed</span>
           </h5>
           <p class="card-text">{{ item.description }}</p>
           <p class="text-muted mb-1">
@@ -37,7 +37,7 @@
           </p>
           <button class="btn btn-outline-primary btn-sm" (click)="openEditModal(item)">Edit</button>
           <button class="btn btn-outline-danger btn-sm ms-2" (click)="deleteItem(item)">Delete</button>
-          <button class="btn btn-outline-success btn-sm ms-2" (click)="completeItem(item)">Complete</button>
+          <button class="btn btn-outline-success btn-sm ms-2" (click)="completeItem(item)">{{ item.isCompleted ? 'Uncomplete' : 'Complete' }}</button>
         </div>
       </div>
     </div>

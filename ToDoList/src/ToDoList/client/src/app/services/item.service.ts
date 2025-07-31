@@ -48,7 +48,7 @@ export class ItemService {
             title: model.title,
             description: model.description,
             isCompleted: model.isCompleted,
-            dueDate: model.dueDate.toString(),
+            dueDate: model.dueDate.toISOString(),
         };
     }
 

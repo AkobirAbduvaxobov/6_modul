@@ -48,6 +48,8 @@ public class ToDoListController : ControllerBase
 
         var userId = User.FindFirst("UserId")?.Value;
 
+        await Task.Delay(2000);
+
         return await _toDoItemService.GetAllToDoItemsAsync(long.Parse(userId));
     }
 

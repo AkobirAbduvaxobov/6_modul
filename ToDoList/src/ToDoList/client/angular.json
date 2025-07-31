@@ -38,6 +38,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -101,7 +103,9 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }
