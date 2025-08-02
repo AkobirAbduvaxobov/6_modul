@@ -14,6 +14,7 @@ namespace ToDoList.Bll.Services
         Task<GetAllResponseModel> GetCompletedAsync(int skip, int take);
         Task<GetAllResponseModel> GetIncompleteAsync(int skip, int take);
         Task<int> GetTotalCountAsync();
+        Task<GetAllResponseModel> GetPagedFilteredToDoItemsAsync(ToDoFilterParams toDoFilterParams, long userId);
 
     }
 }

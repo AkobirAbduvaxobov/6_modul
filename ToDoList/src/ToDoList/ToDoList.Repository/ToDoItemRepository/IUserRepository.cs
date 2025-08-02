@@ -9,4 +9,5 @@ public interface IUserRepository
     Task<User> SelectUserByUserNameAsync(string userName);
     Task UpdateUserRoleAsync(long userId, UserRole userRole);
     Task DeleteUserByIdAsync(long userId);
+    IQueryable<User> SelectAllUsers();
 }

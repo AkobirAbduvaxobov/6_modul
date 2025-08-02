@@ -1,8 +1,8 @@
 export class ItemGetModel {
-  toDoItemId: number = 0;
-  title: string = ''
-  description: string = ''
-  isCompleted: boolean = false;
-  createdAt: Date = new Date(); 
-  dueDate: Date = new Date();   
+  public toDoItemId: number = 0;
+  public title: string = ''
+  public description: string = ''
+  public isCompleted: boolean = false;
+  public createdAt: Date = new Date(); 
+  public dueDate: Date = new Date();   
 }

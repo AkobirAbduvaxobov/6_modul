@@ -53,6 +53,14 @@ public class ToDoListController : ControllerBase
         return await _toDoItemService.GetAllToDoItemsAsync(long.Parse(userId));
     }
 
+    [HttpGet("get-all-filtered")]
+    public async Task<GetAllResponseModel> GetAllFilteredToDoItems([FromQuery] ToDoFilterParams toDoFilterParams)
+    {
+        var userId = User.FindFirst("UserId")?.Value;
+
+        return await _toDoItemService.GetPagedFilteredToDoItemsAsync(toDoFilterParams, long.Parse(userId));
+    }
+
     [HttpDelete("delete")]
     public async Task DeleteToDoItemByIdAsync(long id)
     {

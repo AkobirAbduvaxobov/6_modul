@@ -57,4 +57,9 @@ public class UserRepository : IUserRepository
         MainContext.Users.Remove(user); 
         await MainContext.SaveChangesAsync();
     }
+
+    public IQueryable<User> SelectAllUsers()
+    {
+        return MainContext.Users;   
+    }
 }

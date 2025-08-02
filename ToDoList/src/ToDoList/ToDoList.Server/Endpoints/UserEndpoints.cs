@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using System.Security.Claims;
 using ToDoList.Bll.DTOs;
 using ToDoList.Bll.Services;
@@ -25,9 +24,8 @@ public static class UserEndpoints
             .WithName("DeleteUser")
             .Produces(200)
             .Produces(404);
-           
 
-        // Update Role - requires SuperAdmin role
+
         userGroup.MapPatch("/updateRole", [Authorize(Roles = "SuperAdmin")]
         async (long userId, UserRoleDto userRoleDto, IUserService userService) =>
             {
@@ -35,5 +33,14 @@ public static class UserEndpoints
                 return Results.Ok();
             })
             .WithName("UpdateUserRole");
+
+
+        userGroup.MapPatch("/getUsers", [Authorize(Roles = "Admin,SuperAdmin")]
+        async (IUserService userService) =>
+        {
+            var usersDto = await userService.GetAllUsersAsync();
+            return usersDto;
+        })
+            .WithName("GetAllUsers");
     }
 }

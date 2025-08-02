@@ -1,7 +1,7 @@
 export class ItemUpdateModel {
-  toDoItemId: number = 0;
-  title: string = '';
-  description: string = '';
-  isCompleted: boolean = false;
-  dueDate: Date = new Date();
+  public toDoItemId: number = 0;
+  public title: string = '';
+  public description: string = '';
+  public isCompleted: boolean = false;
+  public dueDate: Date = new Date();
 }

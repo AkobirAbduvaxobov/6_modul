@@ -1,5 +1,5 @@
 export class ItemCreateModel {
-  title: string = '';
-  description: string = '';
-  dueDate: Date = new Date();
+  public title: string = '';
+  public description: string = '';
+  public dueDate: Date = new Date();
 }

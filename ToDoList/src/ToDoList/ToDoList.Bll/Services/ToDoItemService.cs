@@ -43,6 +43,61 @@ namespace ToDoList.Bll.Services
             return id;
         }
 
+
+        public async Task<GetAllResponseModel> GetPagedFilteredToDoItemsAsync(ToDoFilterParams toDoFilterParams, long userId)
+        {
+            var query = _toDoItemRepository.SelectAllToDoItems();
+
+            if(toDoFilterParams.Search != null)
+            {
+                query = query.Where(t => t.Title.Contains(toDoFilterParams.Search));
+            }
+
+            if(toDoFilterParams.IsCompleted.HasValue)
+            {
+                query = query.Where(t => t.IsCompleted == toDoFilterParams.IsCompleted);
+            }
+
+            if(toDoFilterParams.FromDueDate.HasValue)
+            {
+                query = query.Where(t => t.DueDate > toDoFilterParams.FromDueDate);
+            }
+
+            if(toDoFilterParams.ToDueDate.HasValue)
+            {
+                query = query.Where(t => t.DueDate < toDoFilterParams.ToDueDate);
+            }
+
+            if(toDoFilterParams.Skip < 0)
+            {
+                toDoFilterParams.Skip = 0;
+            }
+
+            if(toDoFilterParams.Take > 20 || toDoFilterParams.Take < 0)
+            {
+                toDoFilterParams.Take = 10;
+            }
+
+            query = query.Skip(toDoFilterParams.Skip).Take(toDoFilterParams.Take);
+
+            var toDoItems = await query.ToListAsync();
+            var totalCount = _toDoItemRepository.SelectAllToDoItems()
+                .Where(x => x.UserId == userId)
+                .Count();
+
+            var toDoItemDtos = toDoItems
+                .Select(item => _mapper.Map<ToDoItemGetDto>(item))
+                .ToList();
+
+            var getAllResponseModel = new GetAllResponseModel()
+            {
+                ToDoItemGetDtos = toDoItemDtos,
+                TotalCount = totalCount,
+            };
+
+            return getAllResponseModel;
+        }
+
         public async Task<GetAllResponseModel> GetAllToDoItemsAsync(int skip, int take, long userId)
         {
             var query = _toDoItemRepository.SelectAllToDoItems();
@@ -196,5 +251,6 @@ namespace ToDoList.Bll.Services
             entity.UserId = userId;
             await _toDoItemRepository.UpdateToDoItemAsync(entity);
         }
+
     }
 }
