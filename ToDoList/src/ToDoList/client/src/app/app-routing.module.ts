@@ -5,12 +5,13 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { LoginComponent } from './components/login/login.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AuthGuard } from './services/auth.guard';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: TodoListComponent, canActivate: [AuthGuard] },
-  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard] },
+  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AdminGuard] },
   { path: '**', redirectTo: '' }
 ];
 

@@ -28,11 +28,11 @@ export class TodoListComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService) { }
+    public isAdminUser = false;
 
   ngOnInit(): void {
-
     this.loadItems();
-
+    this.isAdminUser = this.authService.isAdmin();
   }
 
   public loadItems(): void {
@@ -41,11 +41,11 @@ export class TodoListComponent implements OnInit {
     this.itemService.getAllItems().subscribe({
       next: (data) => {
         this.items = data;
-        this.spinner.hide(); // ✅ hide after success
+        this.spinner.hide(); 
       },
       error: (err) => {
         console.error(err);
-        this.spinner.hide(); // ✅ hide after error too
+        this.spinner.hide(); 
       }
     });
   }

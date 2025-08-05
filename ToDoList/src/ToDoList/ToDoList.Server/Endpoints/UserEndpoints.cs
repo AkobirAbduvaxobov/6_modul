@@ -26,7 +26,7 @@ public static class UserEndpoints
             .Produces(404);
 
 
-        userGroup.MapPatch("/updateRole", [Authorize(Roles = "SuperAdmin")]
+        userGroup.MapPatch("/update-role", [Authorize(Roles = "SuperAdmin")]
         async (long userId, UserRoleDto userRoleDto, IUserService userService) =>
             {
                 await userService.UpdateUserRoleAsync(userId, userRoleDto);
@@ -35,12 +35,14 @@ public static class UserEndpoints
             .WithName("UpdateUserRole");
 
 
-        userGroup.MapPatch("/getUsers", [Authorize(Roles = "Admin,SuperAdmin")]
+        userGroup.MapGet("/get-users", [Authorize(Roles = "Admin,SuperAdmin")]
         async (IUserService userService) =>
         {
             var usersDto = await userService.GetAllUsersAsync();
             return usersDto;
         })
             .WithName("GetAllUsers");
+
+
     }
 }

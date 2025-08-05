@@ -9,6 +9,7 @@ import { LoginResponseDto } from '../api/interfaces/login-response-dto';
 import { LoginResponseModel } from './models/login-response-model';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -22,6 +23,24 @@ export class AuthService {
     private isBrowser(): boolean {
         return isPlatformBrowser(this.platformId);
     }
+
+    public getUserRole(): string | null {
+        const token = this.getAccessToken();
+        if (!token) return null;
+
+        try {
+            const decoded: any = jwtDecode(token);
+            return decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    public isAdmin(): boolean {
+        const role = this.getUserRole();
+        return role === 'Admin' || role === 'SuperAdmin';
+    }
+
 
     public signUp(model: SignUpModel): Observable<number> {
         const dto = this.convertSignUpModelToDto(model);
