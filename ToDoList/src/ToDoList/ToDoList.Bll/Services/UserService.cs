@@ -36,9 +36,15 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<ICollection<UserGetDto>> GetAllUsersAsync()
+    public async Task<ICollection<UserGetDto>> GetAllUsersAsync(string userRole)
     {
         var query = UserRepository.SelectAllUsers();
+
+        if(userRole == "Admin")
+        {
+            query = query.Where(u => u.Role != UserRole.SuperAdmin);
+        }
+
         var users = await query.ToListAsync();
 
         var usersDto = users.Select(u => new UserGetDto()

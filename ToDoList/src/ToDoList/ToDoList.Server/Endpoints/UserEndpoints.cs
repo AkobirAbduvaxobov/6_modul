@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ToDoList.Bll.DTOs;
 using ToDoList.Bll.Services;
+using ToDoList.Dal.Entity;
 
 namespace ToDoList.Server.Endpoints;
 
@@ -14,9 +17,15 @@ public static class UserEndpoints
             .WithTags("User Management"); // Swagger section name
 
         // Delete User - requires Admin or SuperAdmin role
-        userGroup.MapDelete("/delete", [Authorize(Roles = "Admin,SuperAdmin")]
+        userGroup.MapDelete("/{userId}", [Authorize(Roles = "Admin,SuperAdmin")]
         async (long userId, HttpContext httpContext, IUserService userService) =>
             {
+                var userIdFromToken = httpContext.User.FindFirst("UserId")?.Value;
+                if(long.Parse(userIdFromToken) == userId)
+                {
+                    throw new Exception("It is not allowed to delete yourself");
+                }
+
                 var role = httpContext.User.FindFirst(ClaimTypes.Role)?.Value;
                 await userService.DeleteUserByIdAsync(userId, role);
                 return Results.Ok();
@@ -26,8 +35,8 @@ public static class UserEndpoints
             .Produces(404);
 
 
-        userGroup.MapPatch("/update-role", [Authorize(Roles = "SuperAdmin")]
-        async (long userId, UserRoleDto userRoleDto, IUserService userService) =>
+        userGroup.MapPut("/update-role", [Authorize(Roles = "SuperAdmin")]
+        async ([FromQuery] long userId, UserRoleDto userRoleDto, IUserService userService) =>
             {
                 await userService.UpdateUserRoleAsync(userId, userRoleDto);
                 return Results.Ok();
@@ -36,13 +45,12 @@ public static class UserEndpoints
 
 
         userGroup.MapGet("/get-users", [Authorize(Roles = "Admin,SuperAdmin")]
-        async (IUserService userService) =>
+        async (HttpContext httpContext, IUserService userService) =>
         {
-            var usersDto = await userService.GetAllUsersAsync();
+            var role = httpContext.User.FindFirst(ClaimTypes.Role)?.Value;
+            var usersDto = await userService.GetAllUsersAsync(role);
             return usersDto;
         })
             .WithName("GetAllUsers");
-
-
     }
 }

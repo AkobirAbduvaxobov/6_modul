@@ -24,6 +24,15 @@ export class UserService {
         );
     }
 
+    public deleteUser(userId: number): Observable<void> {
+        return this.userApiService.deleteUser(userId);
+    }
+
+    public setRole(userId: number, role: UserRoleModel): Observable<void> {
+        const roleDto = this.convertUserRoleModelToDto(role);
+        return this.userApiService.setRole(userId, roleDto);
+    }
+
     private convertItemGetDtoToModel(dto: UserGetDto): UserGetModel {
         return {
             userId: dto.userId,
@@ -44,6 +53,17 @@ export class UserService {
                 return UserRoleModel.SuperAdmin;
             default:
                 return UserRoleModel.User;
+        }
+    }
+
+    private convertUserRoleModelToDto(roleDto: UserRoleModel): UserRoleDto {
+        switch (roleDto) {
+            case UserRoleModel.Admin:
+                return UserRoleDto.Admin;
+            case UserRoleModel.SuperAdmin:
+                return UserRoleDto.SuperAdmin;
+            default:
+                return UserRoleDto.User;
         }
     }
 }
